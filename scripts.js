@@ -1,6 +1,6 @@
- var dodajNulu = (val) => {
- return val < 10 ? "0" + val : val;
- }
+var dodajNulu = (val) => {
+    return val < 10 ? "0" + val : val;
+}
 
 var today = new Date();
 var date = 'Date & Time: ' + dodajNulu(today.getDate()) + '-' + (dodajNulu(today.getMonth() + 1)) + '-' + today.getFullYear();
@@ -11,7 +11,7 @@ document.getElementById("datum").innerHTML = dateTime;
 
 
 
-let data = ["Sonic", "Captain Comando", "Cadilacs and Dinosaurs", "Marvel vs Capcom", "Pang"];
+let data = ['Sonic', 'Captain Comando', 'Cadilacs and Dinosaurs', 'Marvel vs Capcom', 'Pang'];
 let list = document.getElementById("ListaMameIgara");
 data.sort((a, b) => a - b);
 
@@ -57,3 +57,34 @@ if (!data.length && !listaPs2Igara.lenght) {
 } else {
     alert("We have many games available");
 }
+
+// Naknadno dodat kod nakon odbrane ovog iznad
+
+let ukupanBrojIgara = data.length + listaPs2Igara.length
+
+function brojIgara(number) {
+    console.log('Ovo je ukupan broj igara izlistan brojevima unazad ' + number);
+    let newNumber = number - 1;
+    if (newNumber > 0) {
+        brojIgara(newNumber);
+    }
+}
+brojIgara(ukupanBrojIgara);
+
+
+
+
+var ubaciImePlatforme = function (original, replacement, source) {
+    return function (source) {
+        return source.replace(original, replacement);
+    };
+};
+
+var PlaystationPlatform = ubaciImePlatforme(/playstation/ig, "OG playstation");
+var Playstation2Platform = ubaciImePlatforme(/playstation 2/ig, "second iteration of Playstation");
+
+document.getElementById("PS1area").innerHTML = PlaystationPlatform("The Playstation platform is superior to any other.");
+document.getElementById("PS2area").innerHTML = Playstation2Platform("The Playstation 2 is the best console of all time!");
+
+
+
